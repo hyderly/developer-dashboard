@@ -119,7 +119,6 @@ const AddEducation = ({ addEducation, authState: { user } }) => {
             onChange={onChange}
             value={userInput.school_name}
             name="school_name"
-            placeholder="BITS Pilani, Pilani Campus"
           />
         </div>
         <div className="mb-3">
@@ -134,7 +133,6 @@ const AddEducation = ({ addEducation, authState: { user } }) => {
             onChange={onChange}
             value={userInput.degree}
             name="degree"
-            placeholder="Bachelor of Engineering"
           />
         </div>
         <div className="mb-4">

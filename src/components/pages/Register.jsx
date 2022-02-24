@@ -153,7 +153,6 @@ const Register = ({ signUpUser, authState: { isAuthenticated } }) => {
                 className={`form-control ${
                   wrongUserInput.first_name ? "wrong_input" : ""
                 }`}
-                placeholder="Nilanjan"
               />{" "}
               {wrongUserInput.first_name ? (
                 <StyledInputErrorMessage>
@@ -177,7 +176,6 @@ const Register = ({ signUpUser, authState: { isAuthenticated } }) => {
                 className={`form-control ${
                   wrongUserInput.last_name ? "wrong_input" : ""
                 }`}
-                placeholder="Deb"
               />{" "}
               {wrongUserInput.last_name ? (
                 <StyledInputErrorMessage>
