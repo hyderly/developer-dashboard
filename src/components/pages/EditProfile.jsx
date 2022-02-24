@@ -467,13 +467,4 @@ const DevProfileForm = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  authState: state.AUTH_STATE,
-  userProfileState: state.USER_PROFILE,
-});
-
-export default connect(mapStateToProps, {
-  fetchDevProfile,
-  createDevProfile,
-  updateDevProfile,
-})(DevProfileForm);
+export default DevProfileForm;
