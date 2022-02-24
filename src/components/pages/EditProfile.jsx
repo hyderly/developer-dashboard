@@ -41,7 +41,6 @@ function CustomToggle({ children, customOpen }) {
 }
 
 const DevProfileForm = ({
-  authState: { user, isAuthenticated },
   userProfileState,
   fetchDevProfile,
   createDevProfile,
@@ -66,29 +65,6 @@ const DevProfileForm = ({
   const [socialLinkOpen, setSocialLinkOpen] = useState(false);
 
   // Initialize with values
-  useEffect(() => {
-    if (user && !user.new_account && userProfileState.profile === null) {
-      fetchDevProfile(user.id);
-      setFormDisable(true);
-    }
-
-    if (userProfileState.profile) {
-      setFormDisable(false);
-      let populatedFields = {};
-      Object.keys(userProfileState.profile).forEach((key) => {
-        if (key.endsWith("_url") && key !== "website_url") {
-          let inputKey = key.split("_url")[0].concat("_id");
-          populatedFields[inputKey] =
-            (userProfileState.profile[key] || "").split(socialURLs[key])[1] ||
-            "";
-          if (populatedFields[inputKey].trim().length > 0)
-            setSocialLinkOpen(true);
-        } else populatedFields[key] = userProfileState.profile[key] || "";
-      });
-      setUserInput(populatedFields);
-    }
-    // eslint-disable-next-line
-  }, [isAuthenticated, userProfileState.profile]);
 
   // Toggle Action for Social Links Accordion
   const toggleAccordion = () => setSocialLinkOpen(!socialLinkOpen);
@@ -138,16 +114,15 @@ const DevProfileForm = ({
     // prevent the default behavior of form submission
     e.preventDefault();
 
-    history.push("/dashboard");
+    window.location.href("/dashboard");
+    // history.push("/dashboard");
 
     setSubmitted(false);
   };
 
   return (
     <PageContainer className="container py-3 auth__container mb-5">
-      <h2 className="text-info mb-1">
-        {user && !user.new_account ? "Edit" : "Create"} Your Profile
-      </h2>
+      <h2 className="text-info mb-1">Your Profile</h2>
       <p
         className="lead mb-4 text-capitalize"
         style={{ fontSize: "15.5px", fontWeight: 500 }}
